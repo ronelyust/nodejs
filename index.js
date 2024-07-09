@@ -3,11 +3,13 @@
    Description: This file contains the model for the user item for the MongoDB database.
 */
 
+// Adding all our dependencies.
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
+// Using express js and configuring our port.
 const app = express();
 const port = 3000;
 
@@ -26,9 +28,9 @@ app.use('/users', usersRoutes);
 app.use('/report', reportRoutes);
 app.use('/about', aboutRoutes);
 
+// Creating our server and connecting our mongodb database with our custom cluster link.
 const startServer = async () => {
-    const mongoServer = await MongoMemoryServer.create();
-    const mongoUri = mongoServer.getUri();
+  const mongoUri = 'mongodb+srv://ronel:12345@projectcluster.989obrp.mongodb.net/?retryWrites=true&w=majority&appName=ProjectCluster';
 
     mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
         console.log('MongoDB connected');
@@ -36,7 +38,7 @@ const startServer = async () => {
     }).catch(err => console.log(err));
 
     app.listen(port, () => {
-        console.log(`Server running at http://localhost:${port}/`);
+        console.log(`Server running at http://localhost:${port}/`); //checking to see the server has started
     });
 };
 
@@ -51,8 +53,8 @@ const initializeDB = async () => {
                 id: 123123,
                 first_name: 'moshe',
                 last_name: 'israeli',
-                birthday: new Date('1990-01-10')
-            });
+                birthday: 'January 10th, 1990'
+            }); //making sure we have the initial user.
             await newUser.save();
             console.log('Initial user created');
         } else {
