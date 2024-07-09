@@ -7,7 +7,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { MongoMemoryServer } = require('mongodb-memory-server');
 
 // Using express js and configuring our port.
 const app = express();
