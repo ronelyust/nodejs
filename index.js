@@ -27,41 +27,41 @@ app.use('/users', usersRoutes);
 app.use('/report', reportRoutes);
 app.use('/about', aboutRoutes);
 
-// Creating our server and connecting our mongodb database with our custom cluster link.
-const startServer = async () => {
-  const mongoUri = 'mongodb+srv://ronel:12345@projectcluster.989obrp.mongodb.net/?retryWrites=true&w=majority&appName=ProjectCluster';
-
-    mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+// MongoDB connection setup
+const mongoUri = 'mongodb+srv://ronel:12345@projectcluster.989obrp.mongodb.net/?retryWrites=true&w=majority&appName=ProjectCluster';
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
         console.log('MongoDB connected');
-        initializeDB();  // Initialize DB with a user
-    }).catch(err => console.log(err));
-
-    app.listen(port, () => {
-        console.log(`Server running at http://localhost:${port}/`); //checking to see the server has started
-    });
-};
+        initializeDB();
+        startServer();
+    })
+    .catch(err => console.error('MongoDB connection error:', err));
 
 // Initialize the database with a user
 const Users = require('./models/users');
 
-const initializeDB = async () => {
-    try {
-        const user = await Users.findOne({ id: 123123 });
-        if (!user) {
-            const newUser = new Users({
-                id: 123123,
-                first_name: 'moshe',
-                last_name: 'israeli',
-                birthday: 'January 10th, 1990'
-            }); //making sure we have the initial user.
-            await newUser.save();
-            console.log('Initial user created');
-        } else {
-            console.log('Initial user already exists');
-        }
-    } catch (error) {
-        console.error('Error initializing database:', error);
-    }
-};
+async function initializeDB() {
+  try {
+      const user = await Users.findOne({ id: 123123 });
+      if (!user) {
+          const newUser = new Users({
+              id: 123123,
+              first_name: 'moshe',
+              last_name: 'israeli',
+              birthday: 'January 10th, 1990'
+          }); //adding our established user.
+          await newUser.save();
+          console.log('Initial user created');
+      } else {
+          console.log('Initial user already exists');
+      }
+  } catch (error) {
+      console.error('Error initializing database:', error);
+  } // if there was an error while creating the user show it.
+}
 
-startServer();
+function startServer() {
+  app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}/`);
+  });
+}
