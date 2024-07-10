@@ -9,19 +9,19 @@ const Schema = mongoose.Schema;
 
 // Define the schema for the users collection
 const usersSchema = new Schema({
-    id: {
+    user_id: {
         type: Number,
         // Requires an id for each user
         required: true,
         // Ensures each user has a unique ID
         unique: true
     },
-    firstName: {
+    firstname: {
         type: String,
         // Requires a first name for each user
         required: true 
     },
-    lastName: {
+    lastname: {
         type: String,
         // Requires a last name for each user
         required: true 

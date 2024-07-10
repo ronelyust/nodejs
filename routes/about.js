@@ -12,9 +12,9 @@ router.get('/', function(req, res, next) {
     
     // Send the formatted list as JSON response
     res.status(200).json([
-        {firstName:'noam',lastName:'damari',id:209280601,email:'noamdamari5@gmail.com'},
-        {firstName:'ronel',lastName:'yust',id:318434644,email:'ronelyust@gmail.com'},
-        {firstName:'sofi',lastName:'eliazarov',id:325025872,email:'sofi.eli121@gmail.com'}
+        {firstname:'noam',lastname:'damari',id:209280601,email:'noamdamari5@gmail.com'},
+        {firstname:'ronel',lastname:'yust',id:318434644,email:'ronelyust@gmail.com'},
+        {firstname:'sofi',lastname:'eliazarov',id:325025872,email:'sofi.eli121@gmail.com'}
     ]);
 });
 
