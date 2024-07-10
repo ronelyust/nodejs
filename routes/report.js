@@ -1,19 +1,23 @@
 /*
-   Authors: Noam Damari 209280601, Ronel Yust 31843644, Sofi Eliazarov 325025872
-   Description: This file contains the model for the user item for the MongoDB database.
+   Authors: Noam Damari 209280601, Ronel Yust 318434644, Sofi Eliazarov 325025872
+   Description: This file contains the report route and its functions
 */
 
+// Adding all our dependencies.
 const express = require('express');
 const router = express.Router();
 const Calories = require('../models/calories');
 
 // Define the GET route for fetching the detailed report
 router.get('/', async (req, res) => {
-    const { user_id, year, month } = req.query; // Extract query parameters from the request
+    // Extract query parameters from the request
+    const { user_id, year, month } = req.query; 
 
     try {
-        const categories = ['breakfast', 'lunch', 'dinner', 'other']; // Define the calorie categories
-        const report = {}; // Initialize an empty object to hold the report
+        // Define the calorie categories
+        const categories = ['breakfast', 'lunch', 'dinner', 'other'];
+        // Initialize an empty object to hold the report
+        const report = {}; 
 
         // Fetch calories for each category
         for (const category of categories) {
@@ -38,7 +42,7 @@ router.get('/', async (req, res) => {
         res.status(200).json(report);
     } catch (error) {
         // Handle any errors that occur during the process
-        res.status(400).json({ error: error.message });
+        res.status(400).json({ error: error.massage|| "An error occurred while creating the report" });
     }
 });
 

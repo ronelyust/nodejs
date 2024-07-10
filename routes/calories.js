@@ -1,20 +1,26 @@
 /*
-   Authors: Noam Damari 209280601, Ronel Yust 31843644, Sofi Eliazarov 325025872
-   Description: This file contains the model for the user item for the MongoDB database.
+   Authors: Noam Damari 209280601, Ronel Yust 318434644, Sofi Eliazarov 325025872
+   Description: This file contains the calories route
 */
 
+// Adding all our dependencies.
 const express = require('express');
 const router = express.Router();
 const Calories = require('../models/calories');
 
+// Define the GET route for creating new calories items
 router.post('/' , async (req , res) => {
+    // Extract body parameters from the request
     const {user_id, year, month, day, description, category, amount} = req.body;
 
     try {
-        const calories = await Calories.create({user_id, year, month, day, description, category, amount});
-        res.status(200).json(calories);
+        // Trying to create a new Calorie data entry by using our parameters
+        const caloriesEntery = await Calories.create({user_id, year, month, day, description, category, amount});
+        // If the new entry was successfully created, send the formatted entry as JSON response
+        res.status(200).json(caloriesEntery);
     } catch (error) {
-        res.status(400).json({error: error.massage})
+        // Error handling in the case the entry wasn't created
+        res.status(400).json({error: error.massage|| 'An error occurred while adding calories items' })
     }
 });
 

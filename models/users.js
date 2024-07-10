@@ -1,8 +1,9 @@
 /*
-   Authors: Noam Damari 209280601, Ronel Yust 31843644, Sofi Eliazarov 325025872
-   Description: This file contains the model for the user item for the MongoDB database.
+   Authors: Noam Damari 209280601, Ronel Yust 318434644, Sofi Eliazarov 325025872
+   Description: This file contains the model for the user item for the MongoDB database
 */
 
+// Adding all our dependencies.
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -10,25 +11,30 @@ const Schema = mongoose.Schema;
 const usersSchema = new Schema({
     id: {
         type: Number,
+        // Requires an id for each user
         required: true,
-        unique: true // Ensures each user has a unique ID
+        // Ensures each user has a unique ID
+        unique: true
     },
-    first_name: {
+    firstName: {
         type: String,
-        required: true // Requires a first name for each user
+        // Requires a first name for each user
+        required: true 
     },
-    last_name: {
+    lastName: {
         type: String,
-        required: true // Requires a last name for each user
+        // Requires a last name for each user
+        required: true 
     },
     birthday: {
         type: String,
-        required: true// Requires a birthday for each user
+        // Requires a birthday for each user
+        required: true
     }
 
 });
 
 // Create a model named Users based on the schema
-const users = mongoose.model('users',usersSchema);
+const Users = mongoose.model('users',usersSchema);
 
-module.exports = users;
+module.exports = Users;
