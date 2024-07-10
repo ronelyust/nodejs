@@ -13,7 +13,7 @@ router.get('/:id', async (req, res) => {
     const userId = req.params.id;
     try {
         // Waiting to find a user.
-        const user = await Users.findOne({ user_id: userId });
+        const user = await Users.findOne({ id: userId });
         if (user) {
             // If the user exists, send the formatted user as JSON response
             res.status(200).json(user);
