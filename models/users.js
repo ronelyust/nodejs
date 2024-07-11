@@ -35,6 +35,6 @@ const usersSchema = new Schema({
 });
 
 // Create a model named Users based on the schema
-const Users = mongoose.model('users',usersSchema);
+const Users = mongoose.model('Users',usersSchema);
 
 module.exports = Users;
