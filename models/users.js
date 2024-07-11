@@ -16,12 +16,12 @@ const usersSchema = new Schema({
         // Ensures each user has a unique ID
         unique: true
     },
-    firstname: {
+    first_name: {
         type: String,
         // Requires a first name for each user
         required: true 
     },
-    lastname: {
+    last_name: {
         type: String,
         // Requires a last name for each user
         required: true 
