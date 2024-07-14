@@ -12,7 +12,7 @@ const Users = require('../models/users');
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        // Waiting to find a user.
+        // Waiting to find a user and sorting irrelevant fields.
         const user = await Users.findOne({ id: id }).select({ _id: 0, __v: 0 });
         if (user) {
             // If the user exists, send the formatted user as JSON response
