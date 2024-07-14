@@ -23,7 +23,7 @@ router.post('/' , async (req , res) => {
 
     try {
         // Trying to create a new Calorie data entry by using our parameters
-        const caloriesEntery = await Calories.create({id,user_id, year, month, day, description, category, amount});
+        const caloriesEntery = await Calories.create({id, user_id, year, month, day, description, category, amount});
         // If the new entry was successfully created, send the formatted entry as JSON response
         res.status(200).json(caloriesEntery);
     } catch (error) {
