@@ -15,7 +15,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Import routes
-const caloriesRoutes = require('./routes/calories');
+const caloriesRoutes = require('./routes/addcalories');
 const usersRoutes = require('./routes/users');
 const reportRoutes = require('./routes/report');
 const aboutRoutes = require('./routes/about');
