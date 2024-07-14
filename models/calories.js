@@ -9,11 +9,6 @@ const Schema = mongoose.Schema;
 
 // Define the schema for the calories collection
 const caloriesSchema = new Schema({
-   id: {
-        type: String,
-        required: true,
-        unique: true
-    },
     user_id: {
         type: Number,
         // Requires a user id for each calories item.
@@ -33,6 +28,11 @@ const caloriesSchema = new Schema({
         type: Number,
         // Requires a day for each calories item.
         required: true,
+    },
+    id: {
+        type: String,
+        required: true,
+        unique: true
     },
     description: {
         type: String,
