@@ -49,7 +49,7 @@ async function initializeDB() {
       if (!user) { 
           // Waiting to find our established user, if there isn't one proceed to create it
           const newUser = new Users({
-              user_id:123123,
+              id:123123,
               first_name: 'moshe',
               last_name: 'israeli',
               birthday: 'January 10th, 1990'
