@@ -9,7 +9,12 @@ const router = express.Router();
 const Calories = require('../models/calories');
 const uuid = require('uuid');
 
-// Define the GET route for creating new calories items
+// Define a GET route to render the page for adding a new calories item
+router.get('/', async (req, res) => {
+    res.send("Add calories item page");
+});
+
+// Define the POST route for creating new calories items with a generated ID
 router.post('/' , async (req , res) => {
     // Extract body parameters from the request
     const {user_id, year, month, day, description, category, amount} = req.body;
