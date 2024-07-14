@@ -7,15 +7,18 @@
 const express = require('express');
 const router = express.Router();
 const Calories = require('../models/calories');
+const uuid = require('uuid');
 
 // Define the GET route for creating new calories items
 router.post('/' , async (req , res) => {
     // Extract body parameters from the request
     const {user_id, year, month, day, description, category, amount} = req.body;
 
+   const id = uuid.v4()
+
     try {
         // Trying to create a new Calorie data entry by using our parameters
-        const caloriesEntery = await Calories.create({user_id, year, month, day, description, category, amount});
+        const caloriesEntery = await Calories.create({id,user_id, year, month, day, description, category, amount});
         // If the new entry was successfully created, send the formatted entry as JSON response
         res.status(200).json(caloriesEntery);
     } catch (error) {
