@@ -10,10 +10,10 @@ const Users = require('../models/users');
 
 // Define the GET route for fetching a user by its id
 router.get('/:id', async (req, res) => {
-    const userId = req.params.id;
+    const id = req.params.id;
     try {
         // Waiting to find a user.
-        const user = await Users.findOne({ user_id: userId });
+        const user = await Users.findOne({ id: id });
         if (user) {
             // If the user exists, send the formatted user as JSON response
             res.status(200).json(user);
