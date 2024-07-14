@@ -73,3 +73,7 @@ function startServer() {
       console.log(`Server running on port: 3000`);
   }); 
 }
+
+app.get('/' , (req , res) => {
+    res.send("Welcome to Server-Side course final project website");
+});
